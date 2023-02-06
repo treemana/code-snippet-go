@@ -63,3 +63,24 @@ func do(request *http.Request, params, headers map[string]string) (*http.Respons
 	log.Println(http.MethodPost, request.URL.String())
 	return client.Do(request)
 }
+
+// GetContentType 获取 url 对应资源的 ContentType
+func GetContentType(url string) (string, error) {
+
+	if len(url) == 0 {
+		return "", errors.New("empty url")
+	}
+
+	resp, err := http.Get(url)
+	if err != nil {
+		return "", err
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	var data = make([]byte, 512)
+	if _, err = resp.Body.Read(data); err != nil {
+		return "", err
+	}
+
+	return http.DetectContentType(data), nil
+}

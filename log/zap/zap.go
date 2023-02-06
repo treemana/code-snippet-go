@@ -78,4 +78,5 @@ func Init(config Config) {
 
 	Logger = zap.New(zapcore.NewCore(enc, ws, level), zap.AddCaller())
 	Sugar = Logger.Sugar()
+	Logger.Sync()
 }
