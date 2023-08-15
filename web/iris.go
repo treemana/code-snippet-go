@@ -14,7 +14,7 @@ func IRIS() {
 	app.Use(recover.New())
 	app.Use(logger.New())
 	app.Get("/iris", func(ctx iris.Context) {
-		_, _ = ctx.JSON(&Unit{
+		_ = ctx.JSON(&Unit{
 			Name:      "iris",
 			Timestamp: time.Now().Unix(),
 		})
