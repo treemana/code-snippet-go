@@ -5,43 +5,39 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/go-redis/redis/v8"
+	"github.com/redis/go-redis/v9"
 )
 
 var client *redis.ClusterClient
 
 func Init() {
 	client = redis.NewClusterClient(&redis.ClusterOptions{
-		Addrs:              []string{"192.168.1.1:1234"}, // ip:port
-		NewClient:          nil,
-		MaxRedirects:       0,
-		ReadOnly:           false,
-		RouteByLatency:     false,
-		RouteRandomly:      false,
-		ClusterSlots:       nil,
-		Dialer:             nil,
-		OnConnect:          nil,
-		Username:           "",
-		Password:           "",
-		MaxRetries:         0,
-		MinRetryBackoff:    0,
-		MaxRetryBackoff:    0,
-		DialTimeout:        0,
-		ReadTimeout:        time.Second,
-		WriteTimeout:       time.Second,
-		PoolFIFO:           false,
-		PoolSize:           100,
-		MinIdleConns:       0,
-		MaxConnAge:         0,
-		PoolTimeout:        0,
-		IdleTimeout:        time.Minute,
-		IdleCheckFrequency: 0,
-		TLSConfig:          nil,
+		Addrs:           []string{"192.168.1.1:1234"}, // ip:port
+		NewClient:       nil,
+		MaxRedirects:    0,
+		ReadOnly:        false,
+		RouteByLatency:  false,
+		RouteRandomly:   false,
+		ClusterSlots:    nil,
+		Dialer:          nil,
+		OnConnect:       nil,
+		Username:        "",
+		Password:        "",
+		MaxRetries:      0,
+		MinRetryBackoff: 0,
+		MaxRetryBackoff: 0,
+		DialTimeout:     0,
+		ReadTimeout:     time.Second,
+		WriteTimeout:    time.Second,
+		PoolFIFO:        false,
+		PoolSize:        100,
+		MinIdleConns:    0,
+		PoolTimeout:     0,
+		TLSConfig:       nil,
 	})
 
 	if client == nil {
 		panic("redis init failed")
-		return
 	}
 
 	fmt.Println("redis init success")
