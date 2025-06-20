@@ -6,7 +6,7 @@ require (
 	github.com/IBM/sarama v1.45.1
 	github.com/aws/aws-sdk-go v1.55.6
 	github.com/gin-gonic/gin v1.10.0
-	github.com/go-chi/chi/v5 v5.2.1
+	github.com/go-chi/chi/v5 v5.2.2
 	github.com/kataras/iris/v12 v12.2.11
 	github.com/labstack/echo/v4 v4.13.3
 	github.com/natefinch/lumberjack v2.0.0+incompatible
